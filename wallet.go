@@ -50,17 +50,12 @@ func makefile() {
     }
 }
 
-func serveDynamic(w http.ResponseWriter, r *http.Request) {
+func main(){
   file, err := ioutil.ReadFile("test.txt")
   if err != nil {
       log.Fatal(err)
   }
   text := string(file)
 
-  fmt.Fprintln(w,text)
-  }
-
-func main() {
-  http.HandleFunc("/",serveDynamic)
-  http.ListenAndServe(Port,nil)
+  fmt.Println(text)
   }
