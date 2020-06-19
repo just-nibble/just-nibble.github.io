@@ -4,15 +4,10 @@ import (
   "fmt"
   "net/http"
   "io/ioutil"
-  "log"
-  "os"
 )
 
-const (
-  Port = ":8080"
-  )
 
-func makefile() {
+func main() {
 
   url := "https://sandbox.wallets.africa/transfer/banks/all"
   method := "POST"
@@ -31,31 +26,5 @@ func makefile() {
 
   newfile := string(body)
 
-  f, err := os.Create("test.txt")
-    if err != nil {
-        fmt.Println(err)
-        return
-    }
-    l, err := f.WriteString(newfile)
-    if err != nil {
-        fmt.Println(err)
-        f.Close()
-        return
-    }
-    fmt.Println(l, "bytes written successfully")
-    err = f.Close()
-    if err != nil {
-        fmt.Println(err)
-        return
-    }
+  fmt.Println(newfile)
 }
-
-func main(){
-  file, err := ioutil.ReadFile("test.txt")
-  if err != nil {
-      log.Fatal(err)
-  }
-  text := string(file)
-
-  fmt.Println(text)
-  }
